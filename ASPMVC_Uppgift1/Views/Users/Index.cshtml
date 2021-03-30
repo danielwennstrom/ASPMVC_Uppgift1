@@ -1,0 +1,68 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="pb-5">
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+</div>
+
+
+<div class="row row-cols-4 mb-5 mr-1 d-flex flex-column flex-sm-row">
+    @foreach (var user in ViewBag.Admins)
+    {
+        <a asp-controller="UsersController" asp-action="Details" asp-route-id="@user.Id" class="text-decoration-none text-dark">
+            <div class="position-relative pb-5">
+                <div class="card" style="width: 18rem;">
+                    <span class="profile-circle">
+                    </span>
+                    <div class="card-body pr-3 pl-3 pb-3 pt-5 text-center">
+                        <div class="pt-2">
+                            <p>@user.DisplayName</p>
+                            <p>Admin</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    }
+
+    @foreach (var user in ViewBag.Teachers)
+    {
+        <a asp-controller="UsersController" asp-action="Details" asp-route-id="@user.Id" class="text-decoration-none text-dark">
+            <div class="position-relative pb-5">
+                <div class="card" style="width: 18rem;">
+                    <span class="profile-circle">
+                    </span>
+                    <div class="card-body pr-3 pl-3 pb-3 pt-5 text-center">
+                        <div class="pt-2">
+                            <p>@user.DisplayName</p>
+                            <p>Teacher</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    }
+
+        @foreach (var user in ViewBag.Students)
+        {
+            <a asp-controller="UsersController" asp-action="Details" asp-route-id="@user.Id" class="text-decoration-none text-dark">
+                <div class="position-relative pb-5">
+                    <div class="card" style="width: 18rem;">
+                        <span class="profile-circle">
+                        </span>
+                        <div class="card-body pr-3 pl-3 pb-3 pt-5 text-center">
+                            <div class="pt-2">
+                                <p>@user.DisplayName</p>
+                                <p>Student</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+</div>

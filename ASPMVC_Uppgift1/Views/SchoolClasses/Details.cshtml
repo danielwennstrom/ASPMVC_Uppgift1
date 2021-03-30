@@ -1,0 +1,57 @@
+﻿@model ASPMVC_Uppgift1.Entities.SchoolClass
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+        <div class="row">
+            <div class="col text-center font-weight-bolder pb-5 h3">
+                <p>@Model.ClassName</p>
+                <p></p>
+            </div>
+        </div>
+        <div class="row row-cols-4">
+            <div class="col-3">
+                <div class="position-relative pb-2">
+                    <div class="card" style="width: 18rem;">
+                        <span class="profile-circle">
+                        </span>
+                        <div class="card-body pr-3 pl-3 pb-3 pt-5 text-center">
+                            <div class="pt-2 pb-1">
+                                <p class="font-weight-bolder h5">@ViewBag.Teacher</p>
+                                <p>Lärare</p>
+                                <p>@Model.ClassName</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @foreach (var student in ViewBag.Students)
+            {
+                <a asp-controller="SchoolClassStudents" asp-action="Details" asp-route-id="@student.StudentId" class="text-decoration-none text-dark">
+                <div class="col-3">
+                    <div class="position-relative pb-2">
+                        <div class="card" style="width: 18rem;">
+                            <span class="profile-circle">
+                            </span>
+                            <div class="card-body pr-3 pl-3 pb-3 pt-5 text-center">
+                                <div class="pt-2">
+                                    <p class="font-weight-bolder h5">@student.DisplayName</p>
+                                    <p>Elev</p>
+                                    <p>@student.SchoolClass.ClassName</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            }
+        </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

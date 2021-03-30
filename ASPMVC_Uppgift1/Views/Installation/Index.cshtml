@@ -1,0 +1,19 @@
+﻿@*@model ASPMVC_Uppgift1.Models.InstallationViewModel*@
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<h4>Installation</h4>
+<hr />
+<div>
+    <p>Default account has been created. <br /></p>
+    <p>Username: @ViewBag.DefaultEmail <br /></p>
+    <p>Password: @ViewBag.DefaultPassword <br /></p>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

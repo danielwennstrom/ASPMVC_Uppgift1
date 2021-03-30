@@ -1,0 +1,45 @@
+﻿@model List<ASPMVC_Uppgift1.Entities.SchoolClass>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<ul class="nav">
+    <li class="nav-item pr-2">
+        <a asp-action="Create">Create New Class</a>
+    </li>
+
+    <li class="nav-item">
+        <a asp-controller="SchoolClassStudents" asp-action="Create">Assign Student To Class</a>
+    </li>
+</ul>
+
+<div class="container mt-5">
+    <div class="row row-cols-4 mb-5 d-flex flex-column flex-sm-row">
+        @foreach (var item in Model)
+        {
+            <div class="col-3">
+                <div class="pb-5">
+                    <div class="card text-dark" style="width: 18rem;">
+                        <div class="card-body pr-3 pl-3 pb-3 pt-5 text-center">
+                            <div class="pt-2">
+                                <p>@item.ClassName</p>
+                            </div>
+
+                        </div>
+                        <ul class="nav justify-content-center">
+                            <li class="nav-item">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="nav-link">Edit</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="nav-link">Details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="nav-link">Delete</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
