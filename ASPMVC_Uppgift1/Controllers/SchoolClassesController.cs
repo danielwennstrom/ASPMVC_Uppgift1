@@ -74,8 +74,10 @@ namespace ASPMVC_Uppgift1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ClassName,TeacherId,Created")] SchoolClass schoolClass)
+        public async Task<IActionResult> Create([Bind("Id,ClassName,TeacherId")] SchoolClass schoolClass)
         {
+            schoolClass.Created = DateTime.Today;
+
             if (ModelState.IsValid)
             {
                 schoolClass.Id = Guid.NewGuid();
@@ -109,7 +111,7 @@ namespace ASPMVC_Uppgift1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,ClassName,TeacherId,Created")] SchoolClass schoolClass)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,ClassName,TeacherId")] SchoolClass schoolClass)
         {
             if (id != schoolClass.Id)
             {
@@ -165,6 +167,7 @@ namespace ASPMVC_Uppgift1.Controllers
             var schoolClass = await _context.SchoolClasses.FindAsync(id);
             _context.SchoolClasses.Remove(schoolClass);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 

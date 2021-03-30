@@ -15,6 +15,14 @@ namespace ASPMVC_Uppgift1.Entities
             SchoolClassStudents = new HashSet<SchoolClassStudent>();
         }
 
+        public SchoolClass(Guid id, string className, string teacherId, DateTime created)
+        {
+            Id = id;
+            ClassName = className;
+            TeacherId = teacherId;
+            Created = DateTime.Now;
+        }
+
         public Guid Id { get; set; }
         [Required]
         public string ClassName { get; set; }
@@ -22,10 +30,7 @@ namespace ASPMVC_Uppgift1.Entities
         public string TeacherId { get; set; }
         public DateTime Created { get; set; }
 
-        public SchoolClass(DateTime created)
-        {
-            Created = DateTime.Now;
-        }
+
 
         public virtual ICollection<SchoolClassCourse> SchoolClassCourseSchoolClasses { get; set; }
         public virtual ICollection<SchoolClassCourse> SchoolClassCourseSchoolCourses { get; set; }
